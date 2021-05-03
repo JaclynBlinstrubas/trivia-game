@@ -1,22 +1,28 @@
+body {
+    font-family: 'Fjalla One', sans-serif;
+    background-image: url("https://papers.co/wallpaper/papers.co-vy12-simple-white-pattern-background-29-wallpaper.jpg");
+    /* background-image: url("https://www.birchbox.com/images/uploads/B_Sept_Corebox_Wallpaper_DESKTOP_1920x1200.jpg"); */
+}
+
+
 h1 {
     color: rgb(0, 0, 0);
     text-align: center;
-}
-
-h3 {
-    text-align: center;
-}
-
-
-#question-box {
-    width: 80%;
-    height: 40vh;
+    font-size: 50px;
     border: 1px solid black;
-    border-radius: 30px;
-    margin: auto;
-
+    background-color: rgb(231, 181, 123);
+    box-shadow: 0 8px 6px -6px black;
 }
-    
+
+h4 {
+    text-align: center;
+    color:rgb(0, 0, 0);
+    font-size: 20px;
+    border: 1px solid black;
+    background-color: white;
+    box-shadow: 0 8px 6px -6px black;
+}
+
 .answer {
     margin: auto;
     position: flex;
@@ -24,9 +30,33 @@ h3 {
     flex-grow: 1;
     justify-content: space-evenly;
     width: 20vh;
-    height: 5vh;
+    height: 10vh;
     border: 1px solid black;
-    background: pink;
-    border-radius: 30px;
+    background-color: rgb(164, 214, 176);
+    font-family: 'Fjalla One', sans-serif;
+    font-size: larger;
+    box-shadow: 0 8px 6px -6px black;
+    cursor: pointer;
 } 
+
+.score {
+    color: rgb(0, 0, 0);
+    font-size: 40px;
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+}
+
+#question-box {
+    width: auto;
+    height: auto;
+    border: 1px solid black;
+    background-color: white;
+    margin: auto;
+    text-align: center;
+    font-size: xx-large;
+    box-shadow: 0 8px 6px -6px black;
+}
+    
+
 
