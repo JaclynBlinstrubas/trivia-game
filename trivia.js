@@ -7,6 +7,9 @@ let button4 = document.querySelector('.button4')
 let currentQuestion = 0
 let score = document.querySelector('.score')
 let scoreNumber = 0
+let gameOver = false
+let reset = document.querySelector('.reset-button')
+isHidden = document.querySelector('#answer-buttons').hidden
 
 let questions = 
 [
@@ -59,9 +62,13 @@ let questions =
         question: 'What is the most consumed manufactured drink in the world?',
         choices: ['Coca Cola', 'Tea', 'Milk', 'Coffee'],
         answer: 'Tea'
+    },
+    {
+        question: 'What is the most consumed manufactured drink in the world?',
+        choices: ['Coca Cola', 'Tea', 'Milk', 'Coffee'],
+        answer: 'Tea'
     }
 ]
-// console.log(questions)
 
 
 function newQuestion(){
@@ -73,8 +80,6 @@ function newQuestion(){
 newQuestion() 
 
 
-
-
 function newAnswers(){
     button1.innerText = questions[currentQuestion].choices[0]
     button2.innerText = questions[currentQuestion].choices[1]
@@ -84,12 +89,10 @@ function newAnswers(){
 newAnswers()
 
 
-function playerChoice(event) {
-    //event.target.innerText 
-    const choices = questions[currentQuestion].choices   //actual choices
-    const answer = questions[currentQuestion].answer    //answer
-    const answerText = choices[answer]
-      
+function toggleReset() {
+    if (scoreNumber === 100) {
+        isHidden = true
+    }
 }
 
 
@@ -104,22 +107,39 @@ answerButtons.addEventListener('click', (event) => {
             scoreNumber += 10
             newQuestion()
             newAnswers()
+
             score.innerText = scoreNumber
             if (scoreNumber === 100) {
-                document.body.classList.add('Winner Winner Chicken Dinner!')
+                gameOver = true
+                window.alert('Winner Winner Chicken Dinner!')
+
             }
         }
     }
-}
-
-)
+})
 
 //start button
 
 //reset button
+reset.addEventListener('click', (event) => {
+    // console.log(event) // how do i find the innerText?
+    if(event.target.innterText === 'BUTTON') {
+        currentQuestion = 0
+    }
+})
 
 
 
+
+
+
+// function playerChoice(event) {
+//     //event.target.innerText 
+//     const choices = questions[currentQuestion].choices   //actual choices
+//     const answer = questions[currentQuestion].answer    //answer
+//     const answerText = choices[answer]
+      
+// }
 
 
 
