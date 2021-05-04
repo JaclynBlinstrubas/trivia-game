@@ -9,7 +9,7 @@ let score = document.querySelector('.score')
 let scoreNumber = 0
 let gameOver = false
 let reset = document.querySelector('.reset-button')
-isHidden = document.querySelector('#answer-buttons').hidden
+let isHidden = document.querySelector('#answer-buttons')
 
 let questions = 
 [
@@ -91,7 +91,7 @@ newAnswers()
 
 function toggleReset() {
     if (scoreNumber === 100) {
-        isHidden = true
+        isHidden.style.display = 'none'
     }
 }
 
@@ -108,12 +108,12 @@ answerButtons.addEventListener('click', (event) => {
             newQuestion()
             newAnswers()
 
+
             score.innerText = scoreNumber
             if (scoreNumber === 100) {
-                gameOver = true
                 window.alert('Winner Winner Chicken Dinner!')
-
             }
+            toggleReset()
         }
     }
 })
@@ -122,10 +122,13 @@ answerButtons.addEventListener('click', (event) => {
 
 //reset button
 reset.addEventListener('click', (event) => {
-    // console.log(event) // how do i find the innerText?
-    if(event.target.innterText === 'BUTTON') {
-        currentQuestion = 0
-    }
+    console.log(event)
+    scoreNumber = 0
+    score.innerText = scoreNumber
+    currentQuestion = 0
+    isHidden.style.display = 'block'
+    newQuestion()
+    newAnswers()
 })
 
 
