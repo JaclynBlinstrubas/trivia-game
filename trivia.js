@@ -1,3 +1,5 @@
+//initialize variables
+
 let answers = document.querySelectorAll('.answer')
 let question = document.querySelector('#question-box')
 let button1 = document.querySelector('.button1')
@@ -10,6 +12,9 @@ let scoreNumber = 0
 let gameOver = false
 let reset = document.querySelector('.reset-button')
 let isHidden = document.querySelector('#answer-buttons')
+
+//initialize array: each object in the array contains a question, an array of possible choices,
+//and the correct answer for that particular question
 
 let questions = 
 [
@@ -70,16 +75,13 @@ let questions =
     }
 ]
 
-
+// function for setting a new question
 function newQuestion(){
-    //set corresponding answers
-    // console.log(currentQuestion)
     question.innerText = questions[currentQuestion].question
-
 }
 newQuestion() 
 
-
+// function for setting a new set of answers
 function newAnswers(){
     button1.innerText = questions[currentQuestion].choices[0]
     button2.innerText = questions[currentQuestion].choices[1]
@@ -88,82 +90,41 @@ function newAnswers(){
 }
 newAnswers()
 
-
+// function for reset button & to hide the answer choices at the end of the game
 function toggleReset() {
-    if (scoreNumber === 100) {
+    if (scoreNumber === 100) { 
         isHidden.style.display = 'none'
     }
 }
 
+//event listener to work through the question sequence
+const answerButtons = document.querySelector('#answer-buttons') //calls #answer-buttons from the HTML document
 
+answerButtons.addEventListener('click', (event) => {  //when an answer button is clicked, do the following: 
 
-const answerButtons = document.querySelector('#answer-buttons')
-// console.log(answerButtons)
-answerButtons.addEventListener('click', (event) => {
-    console.log(event)
     if (event.target.tagName === 'BUTTON') {    // checking to see if we actually clicked a button
-        if (event.target.innerText === questions[currentQuestion].answer) {    //seeing if the button we clicked was the correct answer
-            currentQuestion ++ 
-            scoreNumber += 10
-            newQuestion()
-            newAnswers()
+        if (event.target.innerText === questions[currentQuestion].answer) {     //checking if the button we clicked was the correct corresponding answer
+            currentQuestion ++  //once the correct answer is clicked, go to the next question
+            scoreNumber += 10   //once correct answer is clicked, add 10 points to scoreNumber
+            newQuestion()   //call newQuestion function to set a new question
+            newAnswers()    //call newAnswers function to set a new set of answers
 
 
-            score.innerText = scoreNumber
-            if (scoreNumber === 100) {
-                window.alert('Winner Winner Chicken Dinner!')
+            score.innerText = scoreNumber   //sets the score text on the page to match scoreNumber
+            if (scoreNumber === 100) {  //once score reaches 100
+                window.alert('Winner Winner Chicken Dinner!')   //alert the player they have won
             }
-            toggleReset()
+            toggleReset()   //when score reaches 100, call this toggelReset function 
         }
     }
 })
 
-//start button
-
-//reset button
-reset.addEventListener('click', (event) => {
-    console.log(event)
-    scoreNumber = 0
+//reset button restets the game
+reset.addEventListener('click', (event) => {    //when reset button is clicked, do the following: 
+    scoreNumber = 0     //reset scoreNumber back to 0
     score.innerText = scoreNumber
-    currentQuestion = 0
-    isHidden.style.display = 'block'
-    newQuestion()
-    newAnswers()
+    currentQuestion = 0     //reset currentQuestion back to 0, or the 1st question
+    isHidden.style.display = 'block'    //this will display the answer buttons
+    newQuestion()   //call newQuestion function to set a new question
+    newAnswers()    //call newAnswers function to set a new set of answers
 })
-
-
-
-
-
-
-// function playerChoice(event) {
-//     //event.target.innerText 
-//     const choices = questions[currentQuestion].choices   //actual choices
-//     const answer = questions[currentQuestion].answer    //answer
-//     const answerText = choices[answer]
-      
-// }
-
-
-
-
-
-// function newQuestion(){
-//     //set corresponding answers
-
-//     question.innerText = questions[currentQuestion].question
-// }
-// newQuestion()  
-
-
-//set next button/ when user clicks run new question
-//incriment current question BEFORE we run the function to get to next question
-
-
-
-// // for (let i = 0; i < questions.length; i++) {
-// // questions[i].addEventListener('click', function() {
-
-// //     })
-// // }
-
